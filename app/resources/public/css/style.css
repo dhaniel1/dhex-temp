@@ -1,0 +1,216 @@
+:root {
+  --primary-darkkkkk: #322405;
+  --primary-base: #fbb217;
+  --primary-light: #fffceb;
+  --primary-tint4: #c98903;
+  --primary-tint5: #e29b04;
+  --primary-light-2: #fef6cd;
+  --text-title: #121419;
+  --text-body: #3c4253;
+  --text-label: #757c91;
+  --text-caption: #aaaebb;
+  --text-white: #fcfcfc;
+  --border-light-mode-dark: #c0c4cd;
+  --border-light-mode-main: #dddfe4;
+  --border-light-mode-light: #e8eaed;
+  --background-dark: #f4f4f6;
+  --background-main: #f9fafa;
+  --background-light: #fff;
+  --success-dark: #002a12;
+  --success-main: #009d44;
+  --success-light: #ebf5ef;
+  --success-lighter: #f5faf7;
+  --success-dark: #00cc59;
+  --warning-dark: #4e2c04;
+  --warning-main: #ea840d;
+  --warning-light: #fdf3e8;
+  --warning-lighter: #fefaf6;
+  --error-dark: #500;
+  --error-main: #db0000;
+  --error-light: #ffebeb;
+  --error-lighter: #fffafa;
+  --error-dark: #f33;
+  --info-dark: #002755;
+  --info-main: #0075ff;
+  --info-light: #e5f1ff;
+  --info-lighter: #f5f9ff;
+  --primary-dark-main: #1f1630;
+  --primary-dark-tint1: #443d53;
+  --grey-90: #f1f2f4;
+  --dark-background1: #120e1b;
+  --dark-main: #191424;
+  --dark-bg-light1: #221a33;
+  --dark-border: #40315e;
+  --dark-bg2: #1b1529;
+  --dark-bg3: #3c2d57;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  color: inherit;
+  font-size: inherit;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 0.9rem !important;
+  font-family: var(--font-family-inter);
+  color: var(--text-white);
+  background: var(--dark-background1);
+}
+
+#__next {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+select {
+  border-radius: 10px !important;
+}
+
+.form-control,
+input,
+select {
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid rgba(243, 249, 249, 0.3);
+}
+.form-control:focus, .form-control:active,
+input:focus,
+input:active,
+select:focus,
+select:active {
+  outline: none;
+  box-shadow: none;
+}
+.form-control:disabled,
+input:disabled,
+select:disabled {
+  border: none !important;
+  cursor: not-allowed;
+}
+
+.btn:focus, .btn:active, .btn:visited, .btn:active:focus, .btn:focus-within, .btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-select:disabled {
+  border: none !important;
+  cursor: not-allowed;
+}
+
+select:focus, select:active, select:visited, select:active:focus, select:focus-within, select:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.spinner-border {
+  width: 1.45rem;
+  height: 1.45rem;
+  border: 0.15em solid currentColor;
+  border-right-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  /* background: #d3d3d3; */
+  background-color: transparent;
+  height: 4px;
+  border-radius: 4px;
+  border-bottom-right-radius: 0;
+}
+
+.scrollbar.show::-webkit-scrollbar-thumb {
+  background: #d3d3d3;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d3d3d3;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  transition-delay: 0.15s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+:root {
+  --font-family-poetsen: "Poetsen One", sans-serif;
+  --font-family-inter: "Inter", sans-serif;
+  --font-family-dm: "DM Sans", sans-serif;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.txxx_loader {
+  width: 128px;
+  height: 128px;
+  border: 8px solid;
+  border-color: var(--sara-500) transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: txxx_rotation 1s linear infinite;
+}
+
+@keyframes txxx_rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

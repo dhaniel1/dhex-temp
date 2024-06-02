@@ -4,7 +4,9 @@ app/target/
 app/*-init.clj
 app/*.log
 app/.clj-kondo
+/.clj-kondo
 app/.lsp
+/.lsp
 .DS_*
 # Leiningen
 app/.lein-*

@@ -10,7 +10,8 @@
                  [ring-cors "0.1.13"]
                  [ring/ring-jetty-adapter "1.12.1"]
                  [ring/ring-defaults "0.5.0"]
-                 [compojure "1.7.1"]]
+                 [compojure "1.7.1"]
+                 [clj-http "3.13.0"]]
 
   :plugins [[lein-ring "0.12.6"]]
 

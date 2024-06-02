@@ -7,9 +7,6 @@
 (defmulti panels identity)
 (defmethod panels :default [] [:div "No panel found for this route."])
 
-#_(def routes
-    (atom))
-
 (def routes-cljs  ["/" {""         :home
                         "login"    :login
                         "logout"   :logout
@@ -18,9 +15,7 @@
                         "editor/"  {[:slug] :editor}
                         "article/" {[:slug] :article}
                         "profile/" {[:user-id] {""           :profile
-                                                "/favorites" :favorited}}}]
-; @routes
-  )
+                                                "/favorites" :favorited}}}])
 
 (defn get-route-handler
   "Returns a map with a :handler key"
@@ -28,17 +23,8 @@
   (bidi/match-route routes-cljs url))
 
 (defn url-for
-    [& args]
-   ; (println args)
-   ; (println [routes-cljs])
-   ; (println (into [] args))
-    (println  (apply bidi/path-for (into [routes-cljs] args)))
-    (apply bidi/path-for (into [routes-cljs] args)))
-
-#_(defn url-for
-  [handler]
-  (println handler)
-  (bidi/path-for routes-cljs  handler))
+  [& args]
+  (apply bidi/path-for (into [routes-cljs] args)))
 
 (def history (let [dispatch #(rf/dispatch [:set-active-page {:page (:handler %)
                                                              :slug      (get-in % [:route-params :slug])

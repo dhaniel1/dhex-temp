@@ -1,0 +1,82 @@
+/* .text-logo {
+    background-image: url("../img/blue-logo-icon.svg");
+    background-color: transparent; 
+    width: 2.10763rem;
+    height: 2.10469rem; 
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+  } */
+
+:root {
+  --border: 1px solid #eee;
+  --navbar-height: 5rem; // cheap hack
+}
+
+.app-text-logo {
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.link {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  &.active,
+  &:hover {
+    background-color: var(--grey-200);
+    color: var(--grey-900);
+    font-weight: bold;
+  }
+}
+
+.twitter {
+  background-image: url("../../img/twitter.svg");
+}
+.telegram {
+  background-image: url("../../img/telegram.svg");
+}
+.whatsapp {
+  background-image: url("../../img/whatsapp.svg");
+}
+
+.logo-icon {
+  background-size: cover;
+  background-position: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+.tag {
+  font-size: 0.8rem !important;
+  padding: 0rem 0.4rem;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &.tag-light {
+    color: var(--grey-700) !important;
+    background-color: var(--grey-300);
+    border: 1px solid #bdbdbd;
+
+    &.active,
+    &:hover {
+      color: var(--grey-200) !important;
+      background-color: var(--grey-800) !important;
+    }
+  }
+
+  &.tag-dark {
+    color: var(--grey-300) !important;
+    background-color: var(--grey-600);
+    border: 1px solid #bdbdbd;
+
+    &.active,
+    &:hover {
+      color: var(--grey-100) !important;
+      background-color: var(--grey-800) !important;
+    }
+  }
+}

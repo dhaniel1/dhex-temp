@@ -1,0 +1,120 @@
+.app-home {
+  height: 100%;
+  // min-height: 100vh;
+
+  /* Insert home general style here */
+  &-hero {
+    background-color: var(--grey-800);
+    p {
+      color: var(--grey-100);
+    }
+  }
+
+  &-main {
+    height: 100%;
+
+    &-content {
+      &-feeds {
+        width: 80%;
+
+        &-selector {
+          border-bottom: 1.5px solid var(--grey-300);
+          font-family: var(--font-family-dm);
+          margin-bottom: 1rem;
+
+          button {
+            font-size: 1rem;
+            color: var(--grey-500);
+
+            &.active,
+            &:hover {
+              font-style: italic;
+              color: var(--grey-800);
+              background-color: var(--grey-300);
+              border-top-left-radius: 0.7rem;
+              border-top-right-radius: 0.7rem;
+            }
+          }
+        }
+
+        &-all-feeds {
+          width: 100%;
+
+          &-feed-preview {
+            border-bottom: 1.5px solid var(--grey-300);
+            margin-bottom: 1rem;
+
+            &-title {
+              // font-family: var(--font-family-inter);
+
+              &-author-avatar {
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+              }
+
+              &-username {
+                font-size: 1rem;
+                font-weight: 500;
+              }
+
+              &-date {
+                font-size: 0.8rem;
+                font-weight: normal;
+                color: var(--grey-700);
+              }
+            }
+
+            &-body {
+              margin: 1rem 0;
+
+              &-title {
+                font-size: 1.3rem;
+                font-weight: 500;
+              }
+
+              &-description {
+                font-size: 0.9rem;
+              }
+            }
+
+            &-footer {
+              p {
+                font-size: 0.8rem;
+                color: var(--grey-600);
+              }
+            }
+          }
+        }
+      }
+
+      &-tags {
+        width: 20%;
+        &-content {
+          height: auto;
+          border-radius: 1rem;
+          background-color: var(--grey-300);
+        }
+      }
+    }
+  }
+
+  &-pagination {
+    &-page {
+      color: var(--grey-700);
+      padding: 1rem;
+      border-radius: 2rem;
+      border: 1px solid var(--grey-300);
+
+      &.active,
+      &:hover {
+        // font-style: italic;
+        font-weight: 500;
+        color: var(--grey-800);
+        background-color: var(--grey-400);
+        cursor: pointer;
+      }
+    }
+  }
+}
+// .app-home-main-content-feeds-selector

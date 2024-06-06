@@ -1,0 +1,23 @@
+section.navbar-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--grey-100);
+}
+
+.app-navbar {
+  &-navlinks {
+    color: var(--grey-800);
+    cursor: pointer;
+
+    p {
+      /* This p style is obsolate, has been replaced by .link in util.scss*/
+      .active,
+      &:hover {
+        background-color: var(--grey-200);
+        color: var(--grey-900);
+      }
+    }
+  }
+}

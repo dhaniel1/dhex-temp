@@ -5,9 +5,7 @@
              [clj-http.client :as client]
              [ring.middleware.cors :refer [wrap-cors]]
              [ring.middleware.reload :refer [wrap-reload]]
-             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            ;[ring.util.response :as res]
-             ))
+             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (def api-url "https://api.realworld.io/api")
 
@@ -21,16 +19,16 @@
 (defn wrap-api-url [handler]
   (fn [request]
     (let [uri (-> request :uri)
+          params (-> request :params)
           endpoint (build-endpoint api-url uri)]
-      (println "new enpoiint build: " endpoint)
-      (handler (assoc request :main-uri endpoint)))))
+
+      (handler (assoc request :main-uri endpoint :params params)))))
 
 ;; The clj-http call should be refactored eventually
 
-(defn fetch-articles [request]
-  (let [response (client/get request)
-       ; _ (println "request: " request)
-        ]
+(defn fetch-articles [uri params]
+  (let [response (client/get uri (when params {:query-params params}))]
+
     {:status 200
      :headers {"Content-Type" "text/html"}
      :body (:body response)}))
@@ -39,7 +37,7 @@
   (GET "/" [] "Hello, Clojure!")
   (GET "/about" [] "About Clojure")
   (wrap-api-url
-   (GET "/articles" {:keys [main-uri]} (fetch-articles main-uri)))
+   (GET "/articles" {:keys [main-uri params]} (fetch-articles main-uri params)))
   (route/not-found "Not Found"))
 
 (def handler

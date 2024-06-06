@@ -11,6 +11,18 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              lg: "1392px",
+              // => @media (min-width: 992px) { ... }
+            },
+          },
+        },
+      };
+    </script>
     <title>dhex</title>
   </head>
   <body>

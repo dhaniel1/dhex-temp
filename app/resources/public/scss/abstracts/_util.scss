@@ -30,16 +30,6 @@
   }
 }
 
-.twitter {
-  background-image: url("../../img/twitter.svg");
-}
-.telegram {
-  background-image: url("../../img/telegram.svg");
-}
-.whatsapp {
-  background-image: url("../../img/whatsapp.svg");
-}
-
 .logo-icon {
   background-size: cover;
   background-position: center;
@@ -48,6 +38,17 @@
   flex-shrink: 0;
   border: none;
   background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.twitter {
+  background-image: url("../../img/twitter.svg");
+}
+.telegram {
+  background-image: url("../../img/telegram.svg");
+}
+.whatsapp {
+  background-image: url("../../img/whatsapp.svg");
 }
 
 .tag {

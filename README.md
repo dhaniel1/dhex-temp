@@ -8,7 +8,7 @@ Shoot me an email at obioradhani.el@gmail.com if you wish to pass a word across
 
 Thanks a bunch for checking me out.
 
-# dhex
+# DheX
 
 Big things start small
 

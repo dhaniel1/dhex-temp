@@ -42,7 +42,7 @@
 (defn navigate!
   "This receives the value of a handler as returned by match-route fn"
   [handler]
-  (pushy/set-token! history (url-for handler)))
+  (pushy/set-token! history (apply url-for (flatten handler))))
 
 (reg-fx
  :navigate

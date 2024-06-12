@@ -17,3 +17,8 @@ app/node_modules/
 
 # shadow-cljs cache, port files
 app/.shadow-cljs/
+
+
+#temp
+app/resources/public/css/style.css
+app/resources/public/css/style.css.map

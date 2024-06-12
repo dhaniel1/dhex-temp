@@ -90,7 +90,8 @@
 
 (defn- main
   []
-  (let [loading-articles? (subscribe :loading-articles?)
+  (let [user (subscribe :user)
+        loading-articles? (subscribe :loading-articles?)
         articles (subscribe :articles)
         loading-tags?  (subscribe :loading-tags?)
         all-tags (subscribe :tags)
@@ -101,6 +102,10 @@
       [:div..app-home-main-content.flex.gap-2.mb-8
        [:div.app-home-main-content-feeds.flex.flex-col
         [:div.app-home-main-content-feeds-selector.flex.gap-1
+         (when (seq user)
+           [:button.p-3 {:class (when (:feed filter) "active")
+                         :on-click #(dispatch [:get-feed-articles {:limit 10 :offset 0}])} "Your Feed"])
+
          [:button.p-3 {:class (when-not (or (:tag filter) (:feed filter)) "active")
                        :on-click #(dispatch [:get-articles {:limit 10 :offset 0}])} "Global Feed"]
          (when (:tag filter)  [:button.p-3 {:class "active"} (str "#" (:tag filter))])]

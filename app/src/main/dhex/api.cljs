@@ -10,3 +10,10 @@
  (->> (cons localhost args) 
      (join "/")))
 
+
+(defn endpoint-direct
+  "concatinates api-url with / "
+ [& args]
+ (->> (cons api-url args) 
+     (join "/")))
+

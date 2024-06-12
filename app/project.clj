@@ -8,15 +8,19 @@
                  [org.clojure/clojurescript "1.10.773"]
                  [ring/ring-core "1.12.1"]
                  [ring-cors "0.1.13"]
+                 [org.clojure/data.json "2.5.0"]
                  [ring/ring-jetty-adapter "1.12.1"]
                  [ring/ring-defaults "0.5.0"]
+                 [ring/ring-json "0.5.0"]
                  [compojure "1.7.1"]
-                 [clj-http "3.13.0"]]
+                 [clj-http "3.13.0"]
+                 [org.clojure/tools.logging "1.3.0"]]
 
   :plugins [[lein-ring "0.12.6"]]
 
   :ring {:handler dhex.handler/handler
          :auto-refresh? true
+         :auto-reload? true
          :port 4000}
 
   :source-paths ["src/main" "test"]

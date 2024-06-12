@@ -1,4 +1,4 @@
-.app-login {
+.app-register {
   &-title {
     margin-top: 2rem;
     // background-color: aquamarine;
@@ -55,29 +55,29 @@
       }
 
       /*   .border {
-        border: 1px solid var(--grey-400);
-        border-radius: 0.5rem;
-
-        input {
-          border: none;
-
+          border: 1px solid var(--grey-400);
+          border-radius: 0.5rem;
+  
+          input {
+            border: none;
+  
+            &:active,
+            &:focus {
+              border: none;
+              // border-color: var(--grey-400);
+              border-color: none;
+              box-shadow: none;
+            }
+          }
+  
           &:active,
           &:focus {
-            border: none;
+            border: 2px solid red;
             // border-color: var(--grey-400);
             border-color: none;
             box-shadow: none;
           }
-        }
-
-        &:active,
-        &:focus {
-          border: 2px solid red;
-          // border-color: var(--grey-400);
-          border-color: none;
-          box-shadow: none;
-        }
-      } */
+        } */
 
       input {
         border-color: var(--grey-400);

@@ -100,11 +100,12 @@
 .link {
   padding: 0.5rem;
   border-radius: 0.5rem;
+  font-weight: 400;
+  color: var(--grey-700);
 }
 .link.active, .link:hover {
   background-color: var(--grey-200);
   color: var(--grey-900);
-  font-weight: bold;
 }
 
 .logo-icon {

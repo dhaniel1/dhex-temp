@@ -32,7 +32,7 @@
 ;; The server males hte calls and passes every appropriate header to and parameters to the client
 
 (defn clj-request [request]
-  (let [_ (clojure.pprint/pprint (get (:headers request) "authorization"))
+  (let [;; _ (clojure.pprint/pprint (get (:headers request) "authorization"))
         authorization (get-in request [:headers "authorization"])
         response (client/request {:method  (:request-method request)
                                   :url     (:url request)
@@ -41,7 +41,7 @@
                                   :query-params (:query-params request)})]
 
     {:status 200
-     :headers {"Content-Type" "text/html"} 
+     :headers {"Content-Type" "text/html"}
      :body (:body response)}))
 
 (defn clj-post [request]
@@ -69,13 +69,12 @@
           (POST "/login" [:as request] (clj-post request))))
 
       (wrap-routes  wrap-api-url))
-  ;; (OPTIONS "/*" [] (fn [_] {:status 200 :headers {} :body ""})) ; Handle preflight requests
+  ;; (OPTIONS "/*" [] (fn [_] {:status 200 :headers {} :body ""})) ; this should handle preflight requests
   (route/not-found "Not Found at all"))
 
 (def handler
   (-> app-routes
-      (wrap-cors :access-control-allow-origin ;;[#"http://localhost:8280"] 
-                 #".*"
+      (wrap-cors :access-control-allow-origin #".*" ;;[#"http://localhost:8280"] 
                  :access-control-allow-credentials "true"
                  :access-control-allow-methods [:get :put :post :delete]
                  :access-control-allow-headers ["Content-Type" "Authorization" "Origin" "Accept"])

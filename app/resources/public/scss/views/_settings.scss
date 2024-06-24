@@ -1,0 +1,22 @@
+.app_settings {
+  &-title {
+    margin-top: 2rem;
+
+    h1 {
+      margin: 0 auto;
+      font-size: 2.5rem;
+      font-weight: 700;
+      // font-family: var(--font-family-poetsen);
+    }
+
+    p {
+      font-size: large;
+      cursor: pointer;
+      color: rgb(21, 21, 108);
+
+      &:hover {
+        color: rgb(49, 49, 169);
+      }
+    }
+  }
+}

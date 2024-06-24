@@ -1,0 +1,38 @@
+.app_article {
+  height: 100%;
+
+  &-hero {
+    background-color: var(--grey-800);
+    p {
+      color: var(--grey-100);
+    }
+  }
+
+  &-body {
+    padding: 2rem;
+    border-bottom: 1px solid var(--grey-300);
+
+    &-comment {
+      width: 50%;
+      max-width: 1000px;
+      margin: auto;
+      background-color: var(--grey-300);
+      border-radius: 0.5rem;
+
+      &-body {
+        background-color: var(--grey-100);
+        border: 1px solid var(--grey-300);
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+
+      &-bottom {
+        padding: 0.2rem 1.5rem 0.7rem;
+
+        .date {
+          color: var(--grey-600);
+        }
+      }
+    }
+  }
+}

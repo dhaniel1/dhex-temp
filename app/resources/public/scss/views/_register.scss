@@ -28,9 +28,9 @@
     margin-top: 3rem;
 
     &-form {
-      width: 50%;
+      width: 70%;
       margin: 0 auto;
-      max-width: 40rem;
+      max-width: 60rem;
 
       .yes-visible {
         background-image: url("../../img/visible.png");
@@ -79,7 +79,8 @@
           }
         } */
 
-      input {
+      // this input style is obsolate as it's defined in utility
+      /*   input {
         border-color: var(--grey-400);
         border-radius: 0.5rem;
         color: var(--grey-900);
@@ -109,7 +110,7 @@
           box-shadow: none;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-      }
+      } */
     }
   }
 }

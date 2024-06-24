@@ -19,3 +19,7 @@
    (assoc cofx :ls-user
           (into (sorted-map) (some->> (.getItem js/localStorage dhex-user-key)
                                       (reader/read-string))))))
+
+(defn remove-ls-user
+  []
+  (.removeItem js/localStorage dhex-user-key))

@@ -1,7 +1,8 @@
 (ns dhex.handler
   (:require  [clojure.string :as string :refer [join]]
-             [compojure.core :refer [defroutes GET POST OPTIONS context wrap-routes]]
+             [compojure.core :refer [defroutes GET POST PUT OPTIONS context wrap-routes]]
              [compojure.route :as route]
+             [cheshire.core :as json]
              [clj-http.client :as client]
              [clojure.pprint :as cp]
              [ring.middleware.params :refer [wrap-params]]
@@ -32,7 +33,8 @@
 ;; The server males hte calls and passes every appropriate header to and parameters to the client
 
 (defn clj-request [request]
-  (let [;; _ (clojure.pprint/pprint (get (:headers request) "authorization"))
+  (let [_ (clojure.pprint/pprint request ;; (get (:headers request) "authorization")
+                                 )
         authorization (get-in request [:headers "authorization"])
         response (client/request {:method  (:request-method request)
                                   :url     (:url request)
@@ -40,19 +42,33 @@
                                   :body    (:body request)
                                   :query-params (:query-params request)})]
 
-    {:status 200
+    {:status  (:status response)
      :headers {"Content-Type" "text/html"}
      :body (:body response)}))
 
 (defn clj-post [request]
-  (let [request (update request :headers dissoc "content-length")
+  (let [;; request (update request :headers dissoc "content-length") ;; this is very unneccessary
         _ (clojure.pprint/pprint request)
+        authorization (get-in request [:headers "authorization"])
         uri (:url request)
         response (client/post uri {:form-params (:body request)
                                    :content-type :json
-                                   :headers {"Accept" "application/json"}})]
+                                   :headers {"authorization" authorization
+                                             "Accept" "application/json"}})]
 
-    {:status 200
+    {:status  (:status response)
+     :headers {"Content-Type" "application/json"}
+     :body (:body response)}))
+
+(defn clj-put [request]
+  (let [authorization (get-in request [:headers "authorization"])
+        uri (:url request)
+        json-body (json/generate-string (:body request))
+        response (client/put uri {:body  json-body
+                                  :content-type :json
+                                  :headers {"authorization" authorization
+                                            "Accept" "application/json"}})]
+    {:status (:status response)
      :headers {"Content-Type" "application/json"}
      :body (:body response)}))
 
@@ -62,14 +78,25 @@
   (-> (context "/" []
         (context "/articles" []
           (GET "/" [:as request] (clj-request request))
-          (GET "/feed" [:as request] (clj-request request)))
+          (POST "/" [:as request] (clj-post request))
+          (PUT "/:slug" [:as request] (clj-put request))
+          (GET "/feed" [:as request] (clj-request request))
+          (GET "/:slug" [:as request] (clj-request request))
+          (GET "/:slug/comments" [:as request] (clj-request request))
+          (POST "/:slug/comments" [:as request] (clj-post request))
+          ;;(GET "/author" [:as request] (clj-request request))
+          )
+
         (GET "/tags" [:as request] (clj-request request))
+        (context "/profiles" []
+          (GET "/:profile" [:as request] (clj-request request)))
+        (PUT "/user" [:as request] (clj-put request))
         (context "/users" []
           (POST "/" [:as request] (clj-post request))
           (POST "/login" [:as request] (clj-post request))))
 
       (wrap-routes  wrap-api-url))
-  ;; (OPTIONS "/*" [] (fn [_] {:status 200 :headers {} :body ""})) ; this should handle preflight requests
+  (OPTIONS "/*" [] (fn [_] {:status 200 :headers {} :body ""}))
   (route/not-found "Not Found at all"))
 
 (def handler
@@ -77,7 +104,8 @@
       (wrap-cors :access-control-allow-origin #".*" ;;[#"http://localhost:8280"] 
                  :access-control-allow-credentials "true"
                  :access-control-allow-methods [:get :put :post :delete]
-                 :access-control-allow-headers ["Content-Type" "Authorization" "Origin" "Accept"])
+                 :access-control-allow-headers ["Content-Type" "Authorization"
+                                                "Origin" "Accept"])
       (wrap-params)
       (wrap-defaults (dissoc site-defaults :security))
       (wrap-json-body {:keywords? true})

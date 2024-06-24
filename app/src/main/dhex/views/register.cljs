@@ -60,7 +60,7 @@
              [:div.is-visible {:on-click #(onClick :password-visible)
                                :class (if (:password-visible @cred) "yes-visible" "not-visible")}]]
             [:button.app-button.items-end ;; implement it's disabled state
-             "Sign up"]]]]
+             "Update Settings"]]]]
 
 ;; Form Input components
          ]))))

@@ -1,4 +1,4 @@
-.app-home {
+.app_profile {
   height: 100%;
   // min-height: 100vh;
 
@@ -15,7 +15,17 @@
   /* Insert home general style here */
   &-hero {
     background-color: var(--grey-800);
+
+    img {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+    }
+
     p {
+      margin-top: 2rem;
+      font-size: 2rem;
+      font-weight: 600;
       color: var(--grey-100);
     }
   }
@@ -26,6 +36,7 @@
     &-content {
       &-feeds {
         width: 80%;
+        margin: 0 auto;
 
         &-selector {
           border-bottom: 1.5px solid var(--grey-300);
@@ -95,15 +106,6 @@
               }
             }
           }
-        }
-      }
-
-      &-tags {
-        width: 20%;
-        &-content {
-          height: auto;
-          border-radius: 1rem;
-          background-color: var(--grey-300);
         }
       }
     }

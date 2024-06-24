@@ -20,4 +20,17 @@ section.navbar-section {
       }
     }
   }
+
+  .link {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 400;
+    color: var(--grey-700);
+
+    &.active,
+    &:hover {
+      background-color: var(--grey-200);
+      color: var(--grey-900);
+    }
+  }
 }

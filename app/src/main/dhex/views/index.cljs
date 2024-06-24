@@ -10,13 +10,16 @@
    [dhex.events]
    [dhex.views.home]
    [dhex.views.login]
+   [dhex.views.editor]
+   [dhex.views.article]
+   [dhex.views.profile]
    [dhex.views.settings]
    [dhex.views.register]))
 
 ;; main
 (defn main-panel []
   (let [active-page (subscribe :active-page)
-        _ (println "Value for active page is " active-page)
+       ;;  _ (println "Value for active page is " active-page)
         prepared-active-page  (-> active-page
                                   name
                                   (str "-view")

@@ -1,14 +1,16 @@
 (ns dhex.views.login
   (:require [reagent.core :as r]
             [re-frame.core :as rf :refer [dispatch]]
-            [dhex.routes :as routes]))
+            [dhex.routes :as routes]
+            [dhex.subs :as sub :refer [subscribe]]))
 
 (defn login-page []
   (let [cred (r/atom {:email "" :password "" :password-visible false})]
 
     (fn []
 
-      (let [register (fn [event cred]
+      (let [loading-login-user? (subscribe :loading-login-user?)
+            register (fn [event cred]
                        (.preventDefault event)
                        (dispatch [:login-user cred]))
             onChange (fn [event key] (swap! cred assoc key (-> event .-target .-value)))
@@ -41,8 +43,8 @@
              [:div.is-visible {:on-click #(onClick :password-visible)
                                :class (if (:password-visible @cred) "yes-visible"  "not-visible")}]]
 
-            [:button.app-button.items-end ;; implement it's disabled state
-             "Sign in"]]]]]))))
+            [:button.app-button.items-end {:disabled loading-login-user?}
+             (if loading-login-user? "Signing in..." "Sign in")]]]]]))))
 
 ;; Form Input components
 (defmethod routes/panels :login-view [] [login-page])
